@@ -6,4 +6,4 @@
 ## What the hell is this?
 This is the new frontend for ls.terminal.ink, which may be renamed to `bots.terminal.ink` in the future.
 
-If you're looking for the currently running code, look [here](https://github.com/terminal/ls,terminal.ink)
+If you're looking for the currently running code, look [here](https://github.com/terminal/ls.terminal.ink)
