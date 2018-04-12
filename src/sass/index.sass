@@ -1,10 +1,10 @@
-@import components/header
-@import components/footer
-@import components/main
-@import components/button
-@import components/botcard
-@import fonts
-@import scrollbar
+@import components/_header
+@import components/_footer
+@import components/_main
+@import components/_button
+@import components/_botcard
+@import _fonts
+@import _scrollbar
 
 body
   padding: 0
@@ -14,3 +14,16 @@ body
   display: flex
   flex-direction: column
   height: 100vh
+
+.row
+  display: flex
+  flex-direction: row
+
+a
+  text-decoration: none
+
+a:link, a:visited
+  color: #0096cf
+
+a:hover, a:active
+  color: #00b0f4

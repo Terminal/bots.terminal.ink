@@ -24,10 +24,16 @@ export default class BotStrip extends Component {
   }
 
   render () {
-    const bots = [...this.state.bots, ...this.state.bots, ...this.state.bots] || []
+    const bots = [...this.state.bots, ...this.state.bots, ...this.state.bots, ...this.state.bots, ...this.state.bots, ...this.state.bots] || []
     return (
       <section className="bot-strip-container">
-        <h1>{this.props.children}</h1>
+        <div className="bot-strip-tab">
+          <div className="bot-strip-tab-content">
+            <h1 className="bot-strip-tab-header">{this.props.children}</h1>
+            <a className="bot-strip-tab-more" href="https://google.co.uk/">More</a>
+          </div>
+          <hr />
+        </div>
         <div className="bot-strip">
           {bots.map((bot, i) => (
             <BotCard bot={bot} key={i}/>

@@ -73,6 +73,18 @@ main {
   background-size: cover;
   padding: 1em;
   flex-grow: 1; }
+  @media screen and (min-width: 600px) {
+    main {
+      padding: 1em 5em 1em 5em; } }
+  @media screen and (min-width: 800px) {
+    main {
+      padding: 1em 10em 1em 10em; } }
+  @media screen and (min-width: 1200px) {
+    main {
+      padding: 1em 15em 1em 15em; } }
+  @media screen and (min-width: 1600px) {
+    main {
+      padding: 1em 20em 1em 20em; } }
 
 .buttons {
   align-items: center;
@@ -100,22 +112,26 @@ main {
   white-space: nowrap; }
   .button.green {
     background-color: #2ecc71;
-    filter: drop-shadow(5px 5px 0 rgba(46, 204, 113, 0.6)); }
+    filter: drop-shadow(5px 5px 0 rgba(46, 204, 113, 0.6));
+    color: #fff; }
     .button.green:hover {
       filter: drop-shadow(5px 5px 0 rgba(46, 204, 113, 0.6)) brightness(50%); }
   .button.orange {
     background-color: #e67e22;
-    filter: drop-shadow(5px 5px 0 rgba(230, 126, 34, 0.6)); }
+    filter: drop-shadow(5px 5px 0 rgba(230, 126, 34, 0.6));
+    color: #fff; }
     .button.orange:hover {
       filter: drop-shadow(5px 5px 0 rgba(230, 126, 34, 0.6)) brightness(50%); }
   .button.blue {
     background-color: #3498db;
-    filter: drop-shadow(5px 5px 0 rgba(52, 152, 219, 0.6)); }
+    filter: drop-shadow(5px 5px 0 rgba(52, 152, 219, 0.6));
+    color: #fff; }
     .button.blue:hover {
       filter: drop-shadow(5px 5px 0 rgba(52, 152, 219, 0.6)) brightness(50%); }
   .button.red {
     background-color: #e74c3c;
-    filter: drop-shadow(5px 5px 0 rgba(231, 76, 60, 0.6)); }
+    filter: drop-shadow(5px 5px 0 rgba(231, 76, 60, 0.6));
+    color: #fff; }
     .button.red:hover {
       filter: drop-shadow(5px 5px 0 rgba(231, 76, 60, 0.6)) brightness(50%); }
   .button.white {
@@ -126,12 +142,17 @@ main {
       filter: drop-shadow(5px 5px 0 rgba(255, 255, 255, 0.6)) brightness(50%); }
   .button.black {
     background-color: #000;
-    filter: drop-shadow(5px 5px 0 rgba(0, 0, 0, 0.6)); }
+    filter: drop-shadow(5px 5px 0 rgba(0, 0, 0, 0.6));
+    color: #fff; }
     .button.black:hover {
       filter: drop-shadow(5px 5px 0 rgba(0, 0, 0, 0.6)) brightness(50%); }
   .button:hover {
     color: #fff;
     transition: all 350ms ease; }
+
+.bot-cards, .bot-strip-container {
+  margin-top: 10px;
+  margin-bottom: 10px; }
 
 .bot-cards {
   display: flex;
@@ -139,25 +160,55 @@ main {
   flex-wrap: wrap;
   justify-content: center; }
 
-.bot-card {
-  width: 250px;
-  margin: 50px;
+.bot-cards-card {
+  width: 120px;
+  height: 17em;
   background-color: #555;
+  margin-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
   display: block;
-  flex-shrink: 0; }
-  @media screen and (max-width: 400px) {
-    .bot-card {
-      width: 100%; } }
+  flex-shrink: 0;
+  filter: drop-shadow(5px 5px 0 rgba(85, 85, 85, 0.6));
+  transition: all 0.5s; }
+  .bot-cards-card:hover {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    transition: all 0.5s; }
+
+.bot-card-avatar {
+  width: 100%; }
 
 .bot-strip-container {
-  border-style: solid;
-  display: block; }
+  display: block;
+  text-align: left; }
 
 .bot-strip {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  overflow-x: auto; }
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 5px; }
+  .bot-strip .bot-cards-card:last-of-type {
+    margin-right: 100px; }
+
+.bot-strip-tab {
+  padding-top: 15px; }
+
+.bot-strip-tab-content {
+  display: flex;
+  justify-content: center; }
+
+.bot-strip-tab-header {
+  margin: 0;
+  display: block; }
+
+.bot-strip-tab-more {
+  display: block;
+  margin-left: auto;
+  margin-top: auto; }
 
 body {
   font-family: "Noto Sans", "Arial", sans-serif; }
@@ -190,5 +241,18 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh; }
+
+.row {
+  display: flex;
+  flex-direction: row; }
+
+a {
+  text-decoration: none; }
+
+a:link, a:visited {
+  color: #0096cf; }
+
+a:hover, a:active {
+  color: #00b0f4; }
 
 /*# sourceMappingURL=index.css.map */

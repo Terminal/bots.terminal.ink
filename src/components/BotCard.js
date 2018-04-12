@@ -4,7 +4,8 @@ import PropTypes from 'prop-types'
 export default class BotCard extends Component {
   render () {
     return (
-      <article className="bot-card">
+      <article className="bot-cards-card">
+        <img className="bot-card-avatar" src={this.props.bot.avatar} />
         <h1>{this.props.bot.name}</h1>
         <p>{this.props.bot.description}</p>
       </article>
