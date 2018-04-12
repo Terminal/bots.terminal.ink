@@ -1,17 +1,15 @@
 import React, { Component } from 'react'
-import Button from './../components/Button'
+import LinkButton from './../components/LinkButton'
 import BotStrip from './../components/BotStrip'
+import ImageStrip from './../components/ImageStrip'
 
 export default class Main extends Component {
   render () {
     return (
       <main>
-        <p>
-          Welcome to the Terminal.ink Test Bot List<br />
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Button href="https://google.com/" colour="blue" label="Google" />
+        <ImageStrip />
         <BotStrip>Cool bots</BotStrip>
+        <LinkButton to="/bots" colour="blue">View all bots</LinkButton>
       </main>
     )
   }
