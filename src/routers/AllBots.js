@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import Button from './../components/Button'
-import BotStrip from './../components/BotStrip'
+import BotList from './../components/BotList'
 
-export default class Main extends Component {
+export default class AllBots extends Component {
   render () {
     return (
       <main>
@@ -10,8 +9,7 @@ export default class Main extends Component {
           Welcome to the Terminal.ink Test Bot List<br />
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <Button href="https://google.com/" colour="blue" label="Google" />
-        <BotStrip>Cool bots</BotStrip>
+        <BotList />
       </main>
     )
   }

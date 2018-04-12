@@ -5,7 +5,7 @@ import './sass/index.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
 
-const apiURI = 'http://127.0.0.1:8080/'
+import config from './config.json'
 
 class App extends Component {
   constructor (props) {
@@ -17,7 +17,7 @@ class App extends Component {
   }
 
   componentDidMount () {
-    fetch(`${apiURI}auth/info`, {
+    fetch(`${config.API_URI}auth/info`, {
       credentials: 'include'
     })
       .then(res => res.json())
@@ -25,9 +25,10 @@ class App extends Component {
   }
 
   render () {
+    const user = this.state.user
     return (
       <div className="App">
-        <Header />
+        <Header user={user}/>
         {this.props.children}
         <Footer />
       </div>

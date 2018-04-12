@@ -5,26 +5,9 @@ import App from './App'
 
 import Home from './routers/Home'
 import Test from './routers/Test'
-
-const apiURI = 'http://127.0.0.1:8080/'
+import AllBots from './routers/AllBots'
 
 class Routes extends Component {
-  constructor (props) {
-    super(props)
-
-    this.state = {
-      user: {}
-    }
-  }
-
-  componentDidMount () {
-    fetch(`${apiURI}auth/info`, {
-      credentials: 'include'
-    })
-      .then(res => res.json())
-      .then(data => this.setState({ user: data }))
-  }
-
   render () {
     return (
       <Router>
@@ -32,6 +15,7 @@ class Routes extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/test" component={Test} />
+            <Route path="/bots" component={AllBots} />
           </Switch>
         </App>
       </Router>
