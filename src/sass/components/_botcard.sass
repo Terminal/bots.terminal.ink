@@ -10,16 +10,22 @@
 
 .bot-cards-card
   width: 120px
-  height: 17em
   background-color: #555
   margin-right: 20px
   margin-top: 10px
   margin-bottom: 10px
   padding: 5px
-  display: block
+  display: flex
+  flex-direction: column
   flex-shrink: 0
   filter: drop-shadow(5px 5px 0 rgba(#555, .6))
   transition: all 0.5s
+  h1, p
+    margin: 0
+  p
+    overflow: hidden
+    line-height: 1.3em
+    height: 2.6em
   &:hover
     margin-top: 0px
     margin-bottom: 20px

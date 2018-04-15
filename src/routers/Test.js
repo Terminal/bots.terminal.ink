@@ -15,7 +15,7 @@ export default class Test extends Component {
 
           The Violin is a string of four bowed instruments, the family is the main members of the family system of other members are: (the viola, the cello and the bass). Modern violin originated from Italian Craig mona, in 1600-1750 years to become the largest violin production center. The famous master making guitars are: Nicola Amati (nicolas, Marty), Antonio Stradivari (Antonio Stella bottom tile), and Giuseppe Guarneri (ji plug pu melon nai); They made instruments so far are priceless. The violins fifth tune: g, d1, a1, e2, register more than three and a half group, is all orchestra indispensable instrument, also after instruments.
         </p>
-        <Button href="https://youtu.be/qbw9fGx_1RU?t=354" colour="blue" label="Source" />
+        <Button href="https://youtu.be/qbw9fGx_1RU?t=354" colour="blue">Source</Button>
       </main>
     )
   }

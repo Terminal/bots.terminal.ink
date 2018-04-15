@@ -6,25 +6,7 @@ import Slider from 'react-slick'
 import config from './../config.json'
 
 export default class ImageStrip extends Component {
-  constructor (props) {
-    super(props)
-
-    this.state = {
-      bots: []
-    }
-  }
-
-  componentDidMount () {
-    const type = this.props.type || ''
-    fetch(`${config.API_URI}bots/${type}`, {
-      credentials: 'include'
-    })
-      .then(res => res.json())
-      .then(data => this.setState({ bots: data }))
-  }
-
   render () {
-    const bots = [...this.state.bots, ...this.state.bots, ...this.state.bots, ...this.state.bots, ...this.state.bots, ...this.state.bots] || []
     const settings = {
       dots: true,
       infinite: true,
@@ -33,7 +15,7 @@ export default class ImageStrip extends Component {
 
     return (
       <Slider {...settings}>
-        {bots.map((bot, i) => (
+        {this.props.bots.map((bot, i) => (
           <img src={config.CDN_URI + bot.banner + '.png'} key={i} alt={bot.name + "'s banner"}/>
         ))}
       </Slider>
@@ -42,5 +24,5 @@ export default class ImageStrip extends Component {
 }
 
 ImageStrip.propTypes = {
-  type: PropTypes.string
+  bots: PropTypes.arrayOf(PropTypes.object)
 }

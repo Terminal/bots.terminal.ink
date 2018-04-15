@@ -7,6 +7,7 @@ import './sass/index.css'
 
 import Header from './components/Header'
 import Footer from './components/Footer'
+import { ToastContainer } from 'react-toastify'
 
 import config from './config.json'
 
@@ -34,6 +35,7 @@ class App extends Component {
         <Header user={user}/>
         {this.props.children}
         <Footer />
+        <ToastContainer />
       </div>
     )
   }

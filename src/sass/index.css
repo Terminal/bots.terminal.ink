@@ -9,20 +9,20 @@ nav {
   flex-direction: row;
   overflow: hidden;
   position: relative; }
-  nav content {
+  nav content, nav .nav-links {
     display: flex;
     margin-left: auto; }
     @media screen and (max-width: 800px) {
-      nav content {
+      nav content, nav .nav-links {
         flex-direction: column;
         position: absolute;
         right: 0;
         background-color: rgba(0, 0, 0, 0.9);
         pointer-events: none;
         height: 100%; }
-        nav content a, nav content h1 {
+        nav content a, nav content h1, nav .nav-links a, nav .nav-links h1 {
           display: none; }
-        nav content::before {
+        nav content::before, nav .nav-links::before {
           content: "Menu!";
           height: 100%;
           padding: 1em;
@@ -32,15 +32,15 @@ nav {
           flex-direction: column;
           text-align: center;
           pointer-events: auto; }
-        nav content:hover, nav content:active {
+        nav content:hover, nav content:active, nav .nav-links:hover, nav .nav-links:active {
           opacity: 1;
           position: fixed;
           transition: opacity 0.5s ease-in-out;
           height: auto; }
-          nav content:hover h1, nav content:hover a, nav content:active h1, nav content:active a {
+          nav content:hover h1, nav content:hover a, nav content:active h1, nav content:active a, nav .nav-links:hover h1, nav .nav-links:hover a, nav .nav-links:active h1, nav .nav-links:active a {
             display: block;
             pointer-events: auto; }
-          nav content:hover::before, nav content:active::before {
+          nav content:hover::before, nav content:active::before, nav .nav-links:hover::before, nav .nav-links:active::before {
             display: none; } }
   nav a:link, nav a:visited, nav a:hover, nav a:active {
     color: #ffffff;
@@ -165,16 +165,22 @@ main {
 
 .bot-cards-card {
   width: 120px;
-  height: 17em;
   background-color: #555;
   margin-right: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
   padding: 5px;
-  display: block;
+  display: flex;
+  flex-direction: column;
   flex-shrink: 0;
   filter: drop-shadow(5px 5px 0 rgba(85, 85, 85, 0.6));
   transition: all 0.5s; }
+  .bot-cards-card h1, .bot-cards-card p {
+    margin: 0; }
+  .bot-cards-card p {
+    overflow: hidden;
+    line-height: 1.3em;
+    height: 2.6em; }
   .bot-cards-card:hover {
     margin-top: 0px;
     margin-bottom: 20px;
@@ -192,8 +198,7 @@ main {
   flex-direction: row;
   flex-wrap: nowrap;
   overflow-x: auto;
-  overflow-y: hidden;
-  padding: 5px; }
+  overflow-y: hidden; }
   .bot-strip .bot-cards-card:last-of-type {
     margin-right: 100px; }
 

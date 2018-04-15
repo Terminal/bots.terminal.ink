@@ -18,18 +18,18 @@ export default class Header extends Component {
           <Link to="/">
             <h1>Terminal.ink Bot List</h1>
           </Link>
-          <content>
+          <div className="nav-links">
             <Link to="/test">Test</Link>
             <Link to="/bots">All Bots</Link>
             {
-              user
+              user && user.username
                 ? ([
                   <a href="/test" key="0">{user.username}</a>,
                   <a href={`${config.API_URI}auth/logout`} key="1">Log out</a>
                 ])
                 : <a href={`${config.API_URI}auth`}>Log in</a>
             }
-          </content>
+          </div>
         </nav>
         <div className="header-jumbotron">
           <h2>The bot list you don&apos;t fork whatsoever (please do not fork)</h2>
