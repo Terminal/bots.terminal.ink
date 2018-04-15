@@ -6,6 +6,7 @@ import App from './App'
 import Home from './routers/Home'
 import Test from './routers/Test'
 import AllBots from './routers/AllBots'
+import EditBot from './routers/EditBot'
 
 class Routes extends Component {
   render () {
@@ -16,6 +17,7 @@ class Routes extends Component {
             <Route exact path="/" component={Home} />
             <Route path="/test" component={Test} />
             <Route path="/bots" component={AllBots} />
+            <Route path="/edit/:id" component={EditBot} />
           </Switch>
         </App>
       </Router>

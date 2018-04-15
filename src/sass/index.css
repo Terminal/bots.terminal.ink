@@ -73,6 +73,8 @@ main {
   background-size: cover;
   padding: 2em;
   flex-grow: 1; }
+  main code {
+    text-align: left; }
   @media screen and (min-width: 600px) {
     main {
       padding: 1em 5em 1em 5em; } }
