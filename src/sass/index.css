@@ -99,6 +99,7 @@ main {
 
 .button {
   background-color: transparent;
+  border: none;
   border-radius: 5px;
   box-sizing: border-box;
   color: #fff;
@@ -235,6 +236,36 @@ main {
 
 .image-strip-image {
   width: 100%; }
+
+.form-edit {
+  display: flex;
+  flex-direction: column; }
+
+.form-label {
+  text-align: left;
+  color: #fff;
+  margin-top: 5px;
+  margin-bottom: 2px; }
+
+.form-input {
+  margin-top: 2px;
+  margin-bottom: 5px;
+  padding: 10px;
+  font-size: 14pt;
+  border-style: none;
+  border-radius: 5px;
+  filter: drop-shadow(5px 5px 0 rgba(255, 255, 255, 0.6));
+  transition: all 350ms ease; }
+  .form-input:hover, .form-input:focus {
+    filter: drop-shadow(5px 5px 0 rgba(255, 255, 255, 0.6)) brightness(90%);
+    transition: all 350ms ease; }
+
+.react-monaco-editor-container {
+  margin-top: 2px;
+  margin-bottom: 5px;
+  text-align: initial;
+  filter: drop-shadow(5px 5px 0 rgba(255, 255, 255, 0.6));
+  color: initial; }
 
 body {
   font-family: "Noto Sans", "Arial", sans-serif; }

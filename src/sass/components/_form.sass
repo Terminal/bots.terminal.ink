@@ -1,0 +1,32 @@
+.form-edit
+  display: flex
+  flex-direction: column
+
+.form-label
+  text-align: left
+  color: #fff
+  margin-top: 5px
+  margin-bottom: 2px
+
+.form-input
+  margin-top: 2px
+  margin-bottom: 5px
+  padding: 10px
+  font-size: 14pt
+  border-style: none
+  border-radius: 5px
+
+  $shadow: drop-shadow(5px 5px 0 rgba(#fff, .6))
+  filter: $shadow
+  transition: all 350ms ease
+  &:hover, &:focus
+    filter: $shadow brightness(90%)
+    transition: all 350ms ease
+
+.react-monaco-editor-container
+  margin-top: 2px
+  margin-bottom: 5px
+  text-align: initial
+  $shadow: drop-shadow(5px 5px 0 rgba(#fff, .6))
+  filter: $shadow
+  color: initial
