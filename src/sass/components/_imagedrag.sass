@@ -1,0 +1,35 @@
+.image-drag
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+
+.image-drag-item
+  display: block
+  background: #fff
+  padding: 5px
+  border-radius: 5px
+  margin-right: 10px
+  margin-bottom: 10px
+  position: relative
+
+  $shadow: drop-shadow(5px 5px 0 rgba(#fff, .6))
+  filter: $shadow
+  transition: filter 350ms ease
+  &:hover, &:focus
+    filter: $shadow brightness(90%)
+    transition: filter 350ms ease
+
+.image-drag-image
+  user-select: none
+  pointer-events: none
+  max-height: 200px
+  max-width: 200px
+
+.image-drag-delete
+  position: absolute
+  display: block
+  line-height: 1em
+  cursor: pointer
+  top: 10px
+  left: 10px
+  background-color: rgba(0, 0, 0, 0.3)

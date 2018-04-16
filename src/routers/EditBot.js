@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ReactRouterPropTypes from 'react-router-prop-types'
 import MonacoEditor from 'react-monaco-editor'
 import 'monaco-editor'
+import ImageDrag from './../components/ImageDrag.js'
 
 import { toast } from 'react-toastify'
 import config from './../config.json'
@@ -126,7 +127,7 @@ export default class EditBot extends Component {
           <MonacoEditor
             key={this.state.width}
             name="description"
-            height="600"
+            height="300"
             options={{
               wordWrap: true
             }}
@@ -140,6 +141,7 @@ export default class EditBot extends Component {
           <input className="form-input" name="invite" type="text" placeholder={oldBot.invite} onChange={this.handleEdit}></input>
           <label className="form-label" htmlFor="prefix">Bot Trigger Prefix</label>
           <input className="form-input" name="prefix" type="text" placeholder={oldBot.prefix} onChange={this.handleEdit}></input>
+          { Array.isArray(oldBot.images) ? <ImageDrag items={oldBot.images} onChange={console.dir}/> : null }
           <button className='button green' type="submit">Submit</button>
         </div>
       </main>
