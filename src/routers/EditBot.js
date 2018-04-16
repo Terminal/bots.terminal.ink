@@ -52,21 +52,24 @@ export default class EditBot extends Component {
   }
 
   handleEdit (e) {
-    const bot = this.state.newBot
+    const oldBot = this.state.oldBot
+    const newBot = this.state.newBot
     const target = e.target
     const name = target.name
     let value
 
     if (target.type === 'checkbox') {
       value = target.checked
+    } else if (target.value === '' || target.value === null) {
+      value = oldBot[name]
     } else {
       value = target.value
     }
 
-    bot[name] = value
+    newBot[name] = value
 
     this.setState({
-      newBot: bot
+      newBot
     })
   }
 
@@ -85,8 +88,8 @@ export default class EditBot extends Component {
         <code><pre>{JSON.stringify(oldBot, null, 2)}</pre></code>
         <code><pre>{JSON.stringify(newBot, null, 2)}</pre></code>
         <form>
-          <input name="id" type="text" defaultValue={oldBot.id} onChange={this.handleEdit}></input>
-          <input name="name" type="text" defaultValue={oldBot.name} onChange={this.handleEdit}></input>
+          <input name="id" type="text" placeholder={oldBot.id} onChange={this.handleEdit}></input>
+          <input name="name" type="text" placeholder={oldBot.name} onChange={this.handleEdit}></input>
         </form>
       </main>
     )
