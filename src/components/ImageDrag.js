@@ -63,7 +63,7 @@ export default class ImageDrag extends Component {
     return (
       <div>
         {/* <button onClick={this.handleAddElement}>Add 1 element</button> */}
-        <Sortable onSort={this.handleSort} dynamic>
+        <Sortable className="image-drag" onSort={this.handleSort} dynamic>
           {this.state.arr.map(renderItem, this)}
         </Sortable>
       </div>

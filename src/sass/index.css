@@ -268,9 +268,8 @@ main {
   color: initial; }
 
 .image-drag {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap; }
+  margin-top: 2px;
+  margin-bottom: 5px; }
 
 .image-drag-item {
   display: block;

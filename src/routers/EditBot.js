@@ -21,6 +21,7 @@ export default class EditBot extends Component {
     this.handleEditorDidMount = this.handleEditorDidMount.bind(this)
     this.updateDimensions = this.updateDimensions.bind(this)
     this.handleEdit = this.handleEdit.bind(this)
+    this.imageEdit = this.imageEdit.bind(this)
     this.descriptionEdit = this.descriptionEdit.bind(this)
   }
 
@@ -102,6 +103,17 @@ export default class EditBot extends Component {
     })
   }
 
+  imageEdit (images) {
+    const oldBot = this.state.oldBot
+    const newBot = this.state.newBot
+
+    newBot.images = images.length > 0 ? images : oldBot.images
+
+    this.setState({
+      newBot
+    })
+  }
+
   handleEditorDidMount (editor) {
     this.setState({
       editor
@@ -141,7 +153,8 @@ export default class EditBot extends Component {
           <input className="form-input" name="invite" type="text" placeholder={oldBot.invite} onChange={this.handleEdit}></input>
           <label className="form-label" htmlFor="prefix">Bot Trigger Prefix</label>
           <input className="form-input" name="prefix" type="text" placeholder={oldBot.prefix} onChange={this.handleEdit}></input>
-          { Array.isArray(oldBot.images) ? <ImageDrag items={oldBot.images} onChange={console.dir}/> : null }
+          <label className="form-label" htmlFor="images">Preview Images</label>
+          { Array.isArray(oldBot.images) ? <ImageDrag items={oldBot.images} onChange={this.imageEdit} name="images"/> : null }
           <button className='button green' type="submit">Submit</button>
         </div>
       </main>
