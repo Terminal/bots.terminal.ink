@@ -51,7 +51,7 @@ export default class ImageDrag extends Component {
     const renderItem = (num, index) => {
       return (
         <SortableContainer className="image-drag-item" key={num} sortData={num}>
-          <img className="image-drag-image" src={config.CDN_URI + num + '.png'} key={index}/>
+          <img className="image-drag-image" src={config.CDN_URI + num + '.png'} key={index} alt={'The #' + index + ' image for this bot.'}/>
           <span
             className="image-drag-delete"
             onClick={this.handleRemoveElement.bind(this, index)}
