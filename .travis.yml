@@ -12,7 +12,7 @@ deploy:
   skip-cleanup: true
   github-token: $GITHUB_TOKEN
   keep-history: true
-  fqdn: api.testls.terminal.ink
+  fqdn: ls.test.terminal.ink
   skip_cleanup: true
   edge:
     branch: v1.8.47
