@@ -1,4 +1,4 @@
 {
-  "API_URI": "http://192.168.0.2:8080/",
+  "API_URI": "http://localhost:8080/",
   "CDN_URI": "https://terminal.ink/assets/images/"
 }
