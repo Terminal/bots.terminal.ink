@@ -1,0 +1,48 @@
+@mixin dropshadow($colour)
+  $shadow: drop-shadow(5px 5px 0 rgba($colour, .6))
+
+  background-color: $colour
+  filter: $shadow
+
+.emphasis
+  background-color: transparent
+  border: none
+  border-radius: 5px
+  box-sizing: border-box
+  color: #fff
+  display: inline-block
+  font-family: 'Roboto', sans-serif
+  font-size: 16px
+  font-weight: 500
+  width: 100%
+  line-height: 38px
+  margin: .5em
+  padding: 10px 30px
+  text-align: center
+  text-decoration: none
+  transition: all 350ms ease
+  white-space: nowrap
+
+  &.green
+    @include dropshadow(#2ecc71)
+    color: #fff
+
+  &.orange
+    @include dropshadow(#e67e22)
+    color: #fff
+
+  &.blue
+    @include dropshadow(#3498db)
+    color: #fff
+
+  &.red
+    @include dropshadow(#e74c3c)
+    color: #fff
+
+  &.white
+    @include dropshadow(#fff)
+    color: #111
+
+  &.black 
+    @include dropshadow(#000)
+    color: #fff

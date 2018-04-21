@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import ReactRouterPropTypes from 'react-router-prop-types'
 import MonacoEditor from 'react-monaco-editor'
 import 'monaco-editor'
-import ImageDrag from './../components/ImageDrag.js'
+import ImageDrag from './../components/ImageDrag'
+import Loading from './../components/Loading'
+import ErrorBox from './../components/ErrorBox'
 
-import { toast } from 'react-toastify'
 import config from './../config.json'
 
 export default class EditBot extends Component {
@@ -12,10 +13,12 @@ export default class EditBot extends Component {
     super(props)
 
     this.state = {
-      oldBot: {},
-      newBot: {},
+      oldBot: null,
+      newBot: null,
       new: true,
-      editor: null
+      editor: null,
+      errors: [],
+      fatal: null
     }
 
     this.handleEditorDidMount = this.handleEditorDidMount.bind(this)
@@ -50,9 +53,13 @@ export default class EditBot extends Component {
         }))
         .catch((error) => {
           if (error.message === 'Failed to fetch') {
-            toast('A network error occured')
+            this.setState({
+              fatal: 'A network error occured'
+            })
           } else {
-            toast('An error occured: ' + error.message)
+            this.setState({
+              fatal: 'An error occured: ' + error.message
+            })
           }
         })
     }
@@ -67,51 +74,41 @@ export default class EditBot extends Component {
   }
 
   updateDimensions () {
-    this.state.editor.layout()
+    if (this.state.editor) this.state.editor.layout()
   }
 
   handleEdit (e) {
-    const oldBot = this.state.oldBot
-    const newBot = this.state.newBot
     const target = e.target
     const name = target.name
     let value
 
     if (target.type === 'checkbox') {
       value = target.checked
-    } else if (target.value === '' || target.value === null) {
-      value = oldBot[name]
     } else {
       value = target.value
     }
 
-    newBot[name] = value
-
-    this.setState({
-      newBot
-    })
+    this.setState((prevState) => ({
+      newBot: Object.assign(prevState.newBot, {
+        [name]: value || prevState.oldBot[name]
+      })
+    }))
   }
 
   descriptionEdit (newValue, e) {
-    const oldBot = this.state.oldBot
-    const newBot = this.state.newBot
-
-    newBot.description = newValue || oldBot.description
-
-    this.setState({
-      newBot
-    })
+    this.setState((prevState) => ({
+      newBot: Object.assign(prevState.newBot, {
+        description: newValue
+      })
+    }))
   }
 
   imageEdit (images) {
-    const oldBot = this.state.oldBot
-    const newBot = this.state.newBot
-
-    newBot.images = images.length > 0 ? images : oldBot.images
-
-    this.setState({
-      newBot
-    })
+    this.setState((prevState) => ({
+      newBot: Object.assign(prevState.newBot, {
+        images: images.length > 0 ? images : prevState.oldBot.images
+      })
+    }))
   }
 
   handleEditorDidMount (editor) {
@@ -124,41 +121,57 @@ export default class EditBot extends Component {
     const newBot = this.state.newBot
     const oldBot = this.state.oldBot
     const errors = this.state.errors
-    return (
-      <main>
-        <h1>{newBot ? 'Add' : 'Edit'} an application</h1>
-        { errors }
-        <code><pre>{JSON.stringify(oldBot, null, 2)}</pre></code>
-        <code><pre>{JSON.stringify(newBot, null, 2)}</pre></code>
-        <div className="form-edit">
-          <label className="form-label" htmlFor="id">Application ID</label>
-          <input className="form-input" name="id" type="text" placeholder={oldBot.id} onChange={this.handleEdit}></input>
-          <label className="form-label" htmlFor="name">Application Name</label>
-          <input className="form-input" name="name" type="text" placeholder={oldBot.name} onChange={this.handleEdit}></input>
-          <label className="form-label" htmlFor="description">Description (Press F1 in editor for options)</label>
-          <MonacoEditor
-            key={this.state.width}
-            name="description"
-            height="300"
-            options={{
-              wordWrap: true
-            }}
-            language="markdown"
-            theme="vs-dark"
-            defaultValue={oldBot.description}
-            onChange={this.descriptionEdit}
-            editorDidMount={this.handleEditorDidMount}
-          />
-          <label className="form-label" htmlFor="invite">Application Invite URL</label>
-          <input className="form-input" name="invite" type="text" placeholder={oldBot.invite} onChange={this.handleEdit}></input>
-          <label className="form-label" htmlFor="prefix">Bot Trigger Prefix</label>
-          <input className="form-input" name="prefix" type="text" placeholder={oldBot.prefix} onChange={this.handleEdit}></input>
-          <label className="form-label" htmlFor="images">Preview Images</label>
-          { Array.isArray(oldBot.images) ? <ImageDrag items={oldBot.images} onChange={this.imageEdit} name="images"/> : null }
-          <button className='button green' type="submit">Submit</button>
-        </div>
-      </main>
-    )
+    const fatal = this.state.fatal
+
+    if (oldBot) {
+      return (
+        <main>
+          <h1>{newBot ? 'Add' : 'Edit'} an application</h1>
+          { errors }
+          <code><pre>{JSON.stringify(oldBot, null, 2)}</pre></code>
+          <code><pre>{JSON.stringify(newBot, null, 2)}</pre></code>
+          <div className="form-edit">
+            <label className="form-label" htmlFor="id">Application ID</label>
+            <input className="form-input" name="id" type="text" placeholder={oldBot.id} onChange={this.handleEdit}></input>
+            <label className="form-label" htmlFor="name">Application Name</label>
+            <input className="form-input" name="name" type="text" placeholder={oldBot.name} onChange={this.handleEdit}></input>
+            <label className="form-label" htmlFor="description">Description (Press F1 in editor for options)</label>
+            <MonacoEditor
+              key={this.state.width}
+              name="description"
+              height="300"
+              options={{
+                wordWrap: true
+              }}
+              language="markdown"
+              theme="vs-dark"
+              defaultValue={oldBot.description}
+              onChange={this.descriptionEdit}
+              editorDidMount={this.handleEditorDidMount}
+            />
+            <label className="form-label" htmlFor="invite">Application Invite URL</label>
+            <input className="form-input" name="invite" type="text" placeholder={oldBot.invite} onChange={this.handleEdit}></input>
+            <label className="form-label" htmlFor="prefix">Bot Trigger Prefix</label>
+            <input className="form-input" name="prefix" type="text" placeholder={oldBot.prefix} onChange={this.handleEdit}></input>
+            <label className="form-label" htmlFor="images">Preview Images</label>
+            <ImageDrag items={oldBot.images} onChange={this.imageEdit} name="images"/>
+            <button className='button green' type="submit">Submit</button>
+          </div>
+        </main>
+      )
+    } else if (fatal) {
+      return (
+        <main>
+          <ErrorBox colour="red">{fatal}</ErrorBox>
+        </main>
+      )
+    } else {
+      return (
+        <main>
+          <Loading />
+        </main>
+      )
+    }
   }
 }
 
