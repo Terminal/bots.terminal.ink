@@ -1,5 +1,7 @@
 # bots.terminal.ink
 
+![Always passing, never failing - Trust us](https://travis-ci.org/Terminal/bots.terminal.ink.svg?branch=master)
+
 1. `yarn install`
 2. `sass --watch src/sass`, `npm start`
 
