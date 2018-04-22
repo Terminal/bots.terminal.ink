@@ -12,7 +12,7 @@ deploy:
   skip-cleanup: true
   github-token: $GITHUB_TOKEN
   keep-history: true
-  fqdn: ls.test.terminal.ink
+  fqdn: ls.mss.ovh
   skip_cleanup: true
   edge:
     branch: v1.8.47
