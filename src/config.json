@@ -1,4 +1,4 @@
 {
-  "API_URI": "https://api.ls.mss.ovh/",
+  "API_URI": "http://localhost:8080/",
   "CDN_URI": "https://terminal.ink/assets/images/"
 }

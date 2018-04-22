@@ -11,3 +11,4 @@ If you're looking for the currently running code, look [here](https://github.com
 ## Thanks
 
 - [AlexFlipnote/ModestaCSS](https://github.com/AlexFlipnote/ModestaCSS)
+- [rafrex/spa-github-pages](https://github.com/rafrex/spa-github-pages)
