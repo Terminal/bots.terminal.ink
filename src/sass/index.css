@@ -69,13 +69,17 @@ footer {
 
 main {
   text-align: center;
-  background-size: cover;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 2em;
+  margin-bottom: 2em;
   padding: 2em;
   box-sizing: border-box;
   flex-grow: 1;
-  width: 100%; }
+  width: 100%;
+  background-color: #444444;
+  filter: drop-shadow(5px 5px 0 rgba(68, 68, 68, 0.6));
+  border-radius: 5px; }
   main code {
     text-align: left; }
   @media screen and (min-width: 800px) {
