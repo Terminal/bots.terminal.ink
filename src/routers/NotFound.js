@@ -3,7 +3,7 @@ import ErrorBox from './../components/ErrorBox'
 
 export default class Test extends Component {
   render () {
-   return (
+    return (
       <main>
         <ErrorBox colour="red">Not Found</ErrorBox>
       </main>

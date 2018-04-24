@@ -74,12 +74,10 @@ main {
   margin-right: auto;
   padding: 2em;
   box-sizing: border-box;
-  flex-grow: 1; }
+  flex-grow: 1;
+  width: 100%; }
   main code {
     text-align: left; }
-  @media screen and (min-width: 600px) {
-    main {
-      width: 100%; } }
   @media screen and (min-width: 800px) {
     main {
       width: 70%; } }

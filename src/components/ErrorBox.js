@@ -19,5 +19,5 @@ export default class ErrorBox extends Component {
 
 ErrorBox.propTypes = {
   colour: PropTypes.string,
-  children: PropTypes.oneOf([PropTypes.string, PropTypes.React])
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.children])
 }
