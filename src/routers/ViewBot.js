@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import ReactRouterPropTypes from 'react-router-prop-types'
-import MonacoEditor from 'react-monaco-editor'
 import 'monaco-editor'
-import ImageDrag from './../components/ImageDrag'
 import Loading from './../components/Loading'
 import ErrorBox from './../components/ErrorBox'
 
