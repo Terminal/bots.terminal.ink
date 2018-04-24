@@ -8,7 +8,7 @@ import './sass/index.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
 
-import config from './config.json'
+import config from './config/index.js'
 
 class App extends Component {
   constructor (props) {

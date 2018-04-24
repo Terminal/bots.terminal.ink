@@ -6,7 +6,7 @@ import ImageDrag from './../components/ImageDrag'
 import Loading from './../components/Loading'
 import ErrorBox from './../components/ErrorBox'
 
-import config from './../config.json'
+import config from './../config/index.js'
 
 export default class EditBot extends Component {
   constructor (props) {

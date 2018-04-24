@@ -3,7 +3,7 @@ import Sortable, { SortableContainer } from 'react-anything-sortable'
 import 'react-anything-sortable/sortable.css'
 import PropTypes from 'prop-types'
 
-import config from './../config.json'
+import config from './../config/index.js'
 
 export default class ImageDrag extends Component {
   constructor (props) {

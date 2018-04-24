@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Slider from 'react-slick'
 // import { Link } from 'react-router-dom'
 
-import config from './../config.json'
+import config from './../config/index.js'
 
 export default class ImageStrip extends Component {
   render () {

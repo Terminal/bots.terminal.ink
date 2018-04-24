@@ -5,7 +5,7 @@ import ImageStrip from './../components/ImageStrip'
 import ErrorBox from './../components/ErrorBox'
 import Loading from './../components/Loading'
 
-import config from './../config.json'
+import config from './../config/index.js'
 
 export default class Home extends Component {
   constructor (props) {

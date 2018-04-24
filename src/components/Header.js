@@ -3,7 +3,7 @@ import Background from '../images/background.jpg'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
-import config from './../config.json'
+import config from './../config/index.js'
 
 const style = {
   backgroundImage: `url(${Background})`
