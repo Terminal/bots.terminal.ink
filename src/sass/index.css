@@ -5,43 +5,8 @@ header {
 
 nav {
   background-color: rgba(0, 0, 0, 0.9);
-  display: flex;
-  flex-direction: row;
-  overflow: hidden;
-  position: relative; }
-  nav content, nav .nav-links {
-    display: flex;
-    margin-left: auto; }
-    @media screen and (max-width: 800px) {
-      nav content, nav .nav-links {
-        flex-direction: column;
-        position: absolute;
-        right: 0;
-        background-color: rgba(0, 0, 0, 0.9);
-        pointer-events: none;
-        height: 100%; }
-        nav content a, nav content h1, nav .nav-links a, nav .nav-links h1 {
-          display: none; }
-        nav content::before, nav .nav-links::before {
-          content: "Menu!";
-          height: 100%;
-          padding: 1em;
-          color: #fff;
-          display: flex;
-          justify-content: center;
-          flex-direction: column;
-          text-align: center;
-          pointer-events: auto; }
-        nav content:hover, nav content:active, nav .nav-links:hover, nav .nav-links:active {
-          opacity: 1;
-          position: fixed;
-          transition: opacity 0.5s ease-in-out;
-          height: auto; }
-          nav content:hover h1, nav content:hover a, nav content:active h1, nav content:active a, nav .nav-links:hover h1, nav .nav-links:hover a, nav .nav-links:active h1, nav .nav-links:active a {
-            display: block;
-            pointer-events: auto; }
-          nav content:hover::before, nav content:active::before, nav .nav-links:hover::before, nav .nav-links:active::before {
-            display: none; } }
+  position: relative;
+  padding: 0.5em 0 0.5em 0; }
   nav a:link, nav a:visited, nav a:hover, nav a:active {
     color: #ffffff;
     text-decoration: none; }
@@ -58,8 +23,14 @@ nav {
 
 .header-jumbotron {
   text-align: center;
-  padding: 5em 1em 5em 1em;
+  padding: 1em;
   background-color: rgba(0, 0, 0, 0.7); }
+
+.nav-links {
+  display: inline-block;
+  text-align: center; }
+  .nav-links a {
+    padding: 0.5em; }
 
 footer {
   text-align: center;
