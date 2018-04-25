@@ -3,6 +3,7 @@ import ReactRouterPropTypes from 'react-router-prop-types'
 import 'monaco-editor'
 import Loading from './../components/Loading'
 import ErrorBox from './../components/ErrorBox'
+import CategoryLabel from './../components/CategoryLabel'
 
 import config from './../config/index.js'
 
@@ -58,10 +59,25 @@ export default class ViewBot extends Component {
     const fatal = this.state.fatal
 
     if (bot) {
+      const owners = new Map(bot.owners)
+
       return (
         <main>
+          <img className="bot-banner" href={config.CDN_URI + bot.banner + '.png'} alt={'The banner image for ' + bot.name}/>
           <h1>{bot.name}</h1>
           { errors }
+          <p>{bot.description}</p>
+          <ul className="left bot-small-print">
+            <li>
+              Category: <CategoryLabel category={bot.category} />
+            </li>
+            <li>
+              Bot offered by: {[...owners.keys()]
+                .map(name => (
+                  <span key={name}>{name}</span>
+                ))}
+            </li>
+          </ul>
         </main>
       )
     } else if (fatal) {
