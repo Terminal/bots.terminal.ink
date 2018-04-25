@@ -1,15 +1,28 @@
-.image-strip-container
-  display: block
-
 .image-strip
-  display: flex
-  flex-direction: row
-  flex-wrap: nowrap
-  padding: 5px
-
-.image-strip-image-container
-  width: 100%
-  flex-grow: 1
+  animation-name: background
+  animation-duration: 10s
+  animation-iteration-count: infinite
+  filter: drop-shadow(5px 5px 0 rgba(#333, .6))
+  border-radius: 5px
 
 .image-strip-image
   width: 100%
+  object-fit: cover
+  max-height: 50vh
+
+.image-strip-image-limit-height
+  max-height: 20vh
+
+// https://github.com/kenwheeler/slick/issues/281
+.slick-initialized .slick-slide
+  float: none
+  display: inline-block
+  vertical-align: middle
+
+@keyframes background
+  0%
+    background-color: #222222
+  50%
+    background-color: #333333
+  100%
+    background-color: #222222

@@ -47,7 +47,10 @@ export default class Home extends Component {
     if (bots) {
       return (
         <main>
-          <ImageStrip bots={bots}/>
+          <ImageStrip className={['image-strip-image-limit-height']} items={bots.map((bot) => ({
+            item: bot.banner,
+            name: bot.name + "'s banner"
+          }))}/>
           <BotStrip bots={bots}>Cool bots</BotStrip>
           <LinkButton to="/bots" colour="blue">View all bots</LinkButton>
         </main>

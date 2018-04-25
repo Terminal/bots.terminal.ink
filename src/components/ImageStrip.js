@@ -10,13 +10,18 @@ export default class ImageStrip extends Component {
     const settings = {
       dots: true,
       infinite: true,
-      speed: 500
+      speed: 500,
+      className: 'image-strip'
     }
+
+    const className = [
+      'image-strip-image'
+    ].concat(this.props.className).join(' ')
 
     return (
       <Slider {...settings}>
-        {this.props.bots.map((bot, i) => (
-          <img src={config.CDN_URI + bot.banner + '.png'} key={i} alt={bot.name + "'s banner"}/>
+        {this.props.items.map((item, i) => (
+          <img className={className} src={config.CDN_URI + item.item + '.png'} key={i} alt={item.name}/>
         ))}
       </Slider>
     )
@@ -24,5 +29,6 @@ export default class ImageStrip extends Component {
 }
 
 ImageStrip.propTypes = {
-  bots: PropTypes.arrayOf(PropTypes.object)
+  items: PropTypes.arrayOf(PropTypes.object),
+  className: PropTypes.arrayOf(PropTypes.string)
 }

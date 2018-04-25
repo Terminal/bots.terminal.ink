@@ -168,7 +168,7 @@ main {
   width: 120px;
   background-color: #555;
   margin-right: 20px;
-  margin-top: 20px;
+  margin-top: 10px;
   margin-bottom: 20px;
   padding: 5px;
   display: flex;
@@ -184,7 +184,7 @@ main {
     height: 2.6em; }
   .bot-cards-card:hover {
     margin-top: 0px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     transition: all 0.5s; }
 
 .bot-card-avatar {
@@ -217,22 +217,33 @@ main {
   margin-left: auto;
   margin-top: auto; }
 
-.image-strip-container {
-  display: block; }
-
 .image-strip {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  padding: 5px; }
-
-.image-strip-image-container {
-  width: 100%;
-  flex-grow: 1; }
+  animation-name: background;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  filter: drop-shadow(5px 5px 0 rgba(51, 51, 51, 0.6));
+  border-radius: 5px; }
 
 .image-strip-image {
-  width: 100%; }
+  width: 100%;
+  object-fit: cover;
+  max-height: 50vh; }
 
+.image-strip-image-limit-height {
+  max-height: 20vh; }
+
+.slick-initialized .slick-slide {
+  float: none;
+  display: inline-block;
+  vertical-align: middle; }
+
+@keyframes background {
+  0% {
+    background-color: #222222; }
+  50% {
+    background-color: #333333; }
+  100% {
+    background-color: #222222; } }
 .form-edit {
   display: flex;
   flex-direction: column; }
@@ -385,10 +396,24 @@ main {
   color: #bd70a3; }
 
 .bot-banner {
-  width: 100%; }
+  width: 100%;
+  max-height: 20vh;
+  object-fit: cover; }
 
 .bot-small-print {
-  font-size: 10pt; }
+  font-size: 10pt;
+  padding: 0;
+  margin: 0; }
+
+.bot-page-container {
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 10px; }
+  .bot-page-container h1, .bot-page-container h2, .bot-page-container h3, .bot-page-container h4, .bot-page-container h5, .bot-page-container h6 {
+    padding: 0;
+    margin: 0; }
+  .bot-page-container.bot-page-image-strip-container {
+    margin-bottom: 40px; }
 
 body {
   font-family: "Noto Sans", "Arial", sans-serif; }
@@ -447,5 +472,8 @@ body {
 
 .left {
   text-align: left; }
+
+.round {
+  border-radius: 5px; }
 
 /*# sourceMappingURL=index.css.map */

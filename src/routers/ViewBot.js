@@ -4,6 +4,7 @@ import 'monaco-editor'
 import Loading from './../components/Loading'
 import ErrorBox from './../components/ErrorBox'
 import CategoryLabel from './../components/CategoryLabel'
+import ImageStrip from './../components/ImageStrip'
 
 import config from './../config/index.js'
 
@@ -63,21 +64,32 @@ export default class ViewBot extends Component {
 
       return (
         <main>
-          <img className="bot-banner" href={config.CDN_URI + bot.banner + '.png'} alt={'The banner image for ' + bot.name}/>
+          <img className="bot-banner round" src={config.CDN_URI + bot.banner + '.png'} alt={'The banner image for ' + bot.name}/>
           <h1>{bot.name}</h1>
           { errors }
           <p>{bot.description}</p>
-          <ul className="left bot-small-print">
-            <li>
-              Category: <CategoryLabel category={bot.category} />
-            </li>
-            <li>
-              Bot offered by: {[...owners.keys()]
-                .map(name => (
+          <div className="bot-page-image-strip-container bot-page-container">
+            <h2>Preview Images</h2>
+            <hr />
+            <ImageStrip items={bot.images.map((image) => ({
+              item: image,
+              name: 'An image "' + image + '" for ' + bot.name
+            }))}/>
+          </div>
+          <div className="bot-page-container">
+            <h6>Small Print</h6>
+            <hr />
+            <ul className="left bot-small-print">
+              <li>
+                Category: <CategoryLabel category={bot.category} />
+              </li>
+              <li>
+                Bot offered by: {[...owners.keys()].map(name => (
                   <span key={name}>{name}</span>
                 ))}
-            </li>
-          </ul>
+              </li>
+            </ul>
+          </div>
         </main>
       )
     } else if (fatal) {
