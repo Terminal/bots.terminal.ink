@@ -146,11 +146,14 @@ main, .page-container {
   flex-direction: column;
   flex-shrink: 0;
   filter: drop-shadow(5px 5px 0 rgba(85, 85, 85, 0.6));
-  transition: all 0.5s; }
+  transition: all 0.5s;
+  text-align: left; }
   .bot-cards-card h1, .bot-cards-card p {
-    margin: 0; }
-  .bot-cards-card p {
+    margin: 0;
+    font-size: 12pt;
     overflow: hidden;
+    text-overflow: ellipsis; }
+  .bot-cards-card p {
     line-height: 1.3em;
     height: 2.6em; }
   .bot-cards-card:hover {
