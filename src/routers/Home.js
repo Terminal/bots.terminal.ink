@@ -51,7 +51,11 @@ export default class Home extends Component {
             item: bot.banner,
             name: bot.name + "'s banner"
           }))}/>
-          <BotStrip bots={bots}>Cool bots</BotStrip>
+          <BotStrip
+            bots={bots}
+            header="Cool Bots"
+            to="/"
+            label="Navigate"/>
           <LinkButton to="/bots" colour="blue">View all bots</LinkButton>
         </main>
       )

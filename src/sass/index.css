@@ -38,7 +38,7 @@ footer {
   background-size: cover;
   padding: 5em 1em 5em 1em; }
 
-main {
+main, .page-container {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
@@ -51,13 +51,13 @@ main {
   background-color: #444444;
   filter: drop-shadow(5px 5px 0 rgba(68, 68, 68, 0.6));
   border-radius: 5px; }
-  main code {
+  main code, .page-container code {
     text-align: left; }
   @media screen and (min-width: 800px) {
-    main {
+    main, .page-container {
       width: 70%; } }
   @media screen and (min-width: 1200px) {
-    main {
+    main, .page-container {
       width: 50%; } }
 
 .buttons {
@@ -171,22 +171,6 @@ main {
   flex-wrap: nowrap;
   overflow-x: auto;
   overflow-y: hidden; }
-
-.bot-strip-tab {
-  padding-top: 15px; }
-
-.bot-strip-tab-content {
-  display: flex;
-  justify-content: center; }
-
-.bot-strip-tab-header {
-  margin: 0;
-  display: block; }
-
-.bot-strip-tab-more {
-  display: block;
-  margin-left: auto;
-  margin-top: auto; }
 
 .image-strip {
   animation-name: background;
@@ -376,15 +360,8 @@ main {
   padding: 0;
   margin: 0; }
 
-.bot-page-container {
-  text-align: left;
-  margin-top: 10px;
-  margin-bottom: 10px; }
-  .bot-page-container h1, .bot-page-container h2, .bot-page-container h3, .bot-page-container h4, .bot-page-container h5, .bot-page-container h6 {
-    padding: 0;
-    margin: 0; }
-  .bot-page-container.bot-page-image-strip-container {
-    margin-bottom: 40px; }
+.bot-page-image-strip-container {
+  margin-bottom: 40px; }
 
 body {
   font-family: "Noto Sans", "Arial", sans-serif; }
@@ -446,5 +423,25 @@ body {
 
 .round {
   border-radius: 5px; }
+
+.underline-container {
+  margin-top: 10px;
+  margin-bottom: 10px; }
+  .underline-container h1, .underline-container h2, .underline-container h3, .underline-container h4, .underline-container h5, .underline-container h6 {
+    padding: 0;
+    margin: 0; }
+
+.underline-content {
+  display: flex;
+  justify-content: left; }
+
+.underline-header {
+  margin: 0;
+  display: inline-block; }
+
+.underline-link {
+  display: inline-block;
+  margin-left: auto;
+  margin-top: auto; }
 
 /*# sourceMappingURL=index.css.map */

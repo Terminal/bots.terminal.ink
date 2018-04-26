@@ -1,30 +1,32 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import BotCard from './BotCard'
+import UnderlineContainer from './UnderlineContainer'
 // import { Link } from 'react-router-dom'
 
 export default class BotStrip extends Component {
   render () {
     return (
-      <section className="bot-strip-container">
-        <div className="bot-strip-tab">
-          <div className="bot-strip-tab-content">
-            <h1 className="bot-strip-tab-header">{this.props.children}</h1>
-            <a className="bot-strip-tab-more" href="https://google.co.uk/">More</a>
-          </div>
-          <hr />
-        </div>
+      <UnderlineContainer
+        header={this.props.header}
+        label={this.props.label}
+        to={this.props.to}
+        href={this.props.href}>
         <div className="bot-strip">
           {this.props.bots.map((bot, i) => (
             <BotCard bot={bot} key={i}/>
           ))}
         </div>
-      </section>
+      </UnderlineContainer>
     )
   }
 }
 
 BotStrip.propTypes = {
+  header: PropTypes.string,
+  label: PropTypes.string,
+  to: PropTypes.string,
+  href: PropTypes.string,
   children: PropTypes.string,
   bots: PropTypes.arrayOf(PropTypes.object)
 }

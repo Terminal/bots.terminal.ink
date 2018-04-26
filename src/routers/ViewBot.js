@@ -5,6 +5,8 @@ import Loading from './../components/Loading'
 import ErrorBox from './../components/ErrorBox'
 import CategoryLabel from './../components/CategoryLabel'
 import ImageStrip from './../components/ImageStrip'
+import UnderlineContainer from './../components/UnderlineContainer'
+import LinkButton from './../components/LinkButton'
 
 import config from './../config/index.js'
 
@@ -63,34 +65,41 @@ export default class ViewBot extends Component {
       const owners = new Map(bot.owners)
 
       return (
-        <main>
-          <img className="bot-banner round" src={config.CDN_URI + bot.banner + '.png'} alt={'The banner image for ' + bot.name}/>
-          <h1>{bot.name}</h1>
-          { errors }
-          <p>{bot.description}</p>
-          <div className="bot-page-image-strip-container bot-page-container">
-            <h2>Preview Images</h2>
-            <hr />
-            <ImageStrip items={bot.images.map((image) => ({
-              item: image,
-              name: 'An image "' + image + '" for ' + bot.name
-            }))}/>
+        <div>
+          <div className="page-container">
+            <UnderlineContainer
+              header="Buddons">
+              <p>These tools will only visible (during dev)</p>
+              <LinkButton to={'/edit/' + bot.id} colour="blue">Edit</LinkButton>
+            </UnderlineContainer>
           </div>
-          <div className="bot-page-container">
-            <h6>Small Print</h6>
-            <hr />
-            <ul className="left bot-small-print">
-              <li>
-                Category: <CategoryLabel category={bot.category} />
-              </li>
-              <li>
-                Bot offered by: {[...owners.keys()].map(name => (
-                  <span key={name}>{name}</span>
-                ))}
-              </li>
-            </ul>
-          </div>
-        </main>
+          <main>
+            <img className="bot-banner round" src={config.CDN_URI + bot.banner + '.png'} alt={'The banner image for ' + bot.name}/>
+            <h1>{bot.name}</h1>
+            { errors }
+            <p>{bot.description}</p>
+            <UnderlineContainer
+              header="Images">
+              <ImageStrip items={bot.images.map((image) => ({
+                item: image,
+                name: 'An image "' + image + '" for ' + bot.name
+              }))}/>
+            </UnderlineContainer>
+            <UnderlineContainer
+              header="Small Print">
+              <ul className="left bot-small-print">
+                <li>
+                  Category: <CategoryLabel category={bot.category} />
+                </li>
+                <li>
+                  Bot offered by: {[...owners.keys()].map(name => (
+                    <span key={name}>{name}</span>
+                  ))}
+                </li>
+              </ul>
+            </UnderlineContainer>
+          </main>
+        </div>
       )
     } else if (fatal) {
       return (
