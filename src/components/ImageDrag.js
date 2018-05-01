@@ -23,6 +23,15 @@ export default class ImageDrag extends Component {
     })
   }
 
+  // Only when an image is added or removed
+  componentWillReceiveProps (nextProps) {
+    if (this.props.items && this.props.items.length !== nextProps.items.length) {
+      this.setState({
+        arr: nextProps.items || []
+      })
+    }
+  }
+
   handleSort (sortedArray) {
     this.setState({
       arr: sortedArray
@@ -44,14 +53,14 @@ export default class ImageDrag extends Component {
     this.setState({
       arr: newArr
     })
-    if (this.props.onChange) this.props.onChange(this.state.arr)
+    if (this.props.onChange) this.props.onChange(newArr)
   }
 
   render () {
     const renderItem = (num, index) => {
       return (
         <SortableContainer className="image-drag-item" key={num} sortData={num}>
-          <img className="image-drag-image" src={config.CDN_URI + num + '.png'} key={index} alt={'The #' + index + ' image for this bot.'}/>
+          <img className="image-drag-image" src={config.CDN_URI + num} key={index} alt={'The #' + index + ' image for this bot.'}/>
           <span
             className="image-drag-delete"
             onClick={this.handleRemoveElement.bind(this, index)}
@@ -62,10 +71,14 @@ export default class ImageDrag extends Component {
 
     return (
       <div>
+        {
+          this.state.arr.length === 0
+            ? <p>No images</p>
+            : <Sortable className="image-drag" onSort={this.handleSort} dynamic>
+              {this.state.arr.map(renderItem, this)}
+            </Sortable>
+        }
         {/* <button onClick={this.handleAddElement}>Add 1 element</button> */}
-        <Sortable className="image-drag" onSort={this.handleSort} dynamic>
-          {this.state.arr.map(renderItem, this)}
-        </Sortable>
       </div>
     )
   }

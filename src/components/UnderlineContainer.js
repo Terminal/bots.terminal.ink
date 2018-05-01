@@ -23,5 +23,8 @@ UnderlineContainer.propTypes = {
   label: PropTypes.string,
   to: PropTypes.string,
   href: PropTypes.string,
-  children: PropTypes.element
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired
 }

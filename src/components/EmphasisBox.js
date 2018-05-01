@@ -13,5 +13,8 @@ export default class EmphasisBox extends Component {
 
 EmphasisBox.propTypes = {
   colour: PropTypes.string,
-  children: PropTypes.oneOf(PropTypes.string, PropTypes.React)
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired
 }
