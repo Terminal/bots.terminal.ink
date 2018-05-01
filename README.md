@@ -1,10 +1,10 @@
-# Terminal.ink Bot List Backend
+# discordbots.uk frontend
 [![Build Status](https://travis-ci.org/Terminal/bots.terminal.ink.svg?branch=master)](https://travis-ci.org/Terminal/bots.terminal.ink)
 
 - [Development Backend](https://api.ls.mss.ovh/)
 - [Development Frontend](https://ls.mss.ovh/)
 
-For information, try [our Discord server.](https://discordapp.com/invite/8uC6aKZ)
+For information, try [our Discord server.](https://discordapp.com/invite/wHgdmf4)
 
 ## Development
 1. `yarn install`
@@ -18,7 +18,7 @@ For information, try [our Discord server.](https://discordapp.com/invite/8uC6aKZ
 3. `yarn build`
 
 ## What the hell is this?
-This is the new frontend for ls.terminal.ink, which may or may not be renamed to `discordbots.co.uk` in the future.
+This is the new frontend for ls.terminal.ink, which may or may not be renamed to `discordbots.uk` in the future.
 
 ## Thanks
 - [AlexFlipnote/ModestaCSS](https://github.com/AlexFlipnote/ModestaCSS)
