@@ -7,9 +7,9 @@ const get = (language, text, extras) => {
 
   if (!languages[language]) return defaultReply
   if (!languages[language][text]) return defaultReply
-  if (typeof languages[language][text] !== 'function') return defaultReply
-
-  return languages[language][text](extras) || defaultReply
+  if (typeof languages[language][text] === 'string') return languages[language][text]
+  if (typeof languages[language][text] === 'function') return languages[language][text]()
+  return defaultReply
 }
 
 module.exports = {
