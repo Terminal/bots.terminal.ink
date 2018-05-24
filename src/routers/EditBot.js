@@ -177,7 +177,7 @@ export default class EditBot extends Component {
             <label className="form-label" htmlFor="prefix">Bot Trigger Prefix</label>
             <input className="form-input" name="prefix" type="text" placeholder={oldBot.prefix} onChange={this.handleEdit}></input>
             <label className="form-label" htmlFor="images">Preview Images</label>
-            <label className="button blue" htmlFor="bannerUpload">Upload</label>
+            <label className="button blue" htmlFor="bannerUpload">Upload a new image</label>
             <input className="invisible" name="bannerUpload" id="bannerUpload" type="file" onChange={this.imageUpload}/>
             <ImageDrag items={oldBot.images} onChange={this.imageEdit} name="images"/>
             <button className='button green' type="submit">Submit</button>
