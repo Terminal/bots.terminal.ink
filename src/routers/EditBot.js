@@ -5,6 +5,7 @@ import 'monaco-editor'
 import ImageDrag from './../components/ImageDrag'
 import Loading from './../components/Loading'
 import ErrorBox from './../components/ErrorBox'
+import EmphasisBox from './../components/EmphasisBox'
 
 import config from './../config/index.js'
 
@@ -17,7 +18,7 @@ export default class EditBot extends Component {
       newBot: null,
       new: true,
       editor: null,
-      errors: [],
+      error: null,
       fatal: null
     }
 
@@ -25,7 +26,10 @@ export default class EditBot extends Component {
     this.updateDimensions = this.updateDimensions.bind(this)
     this.handleEdit = this.handleEdit.bind(this)
     this.imageEdit = this.imageEdit.bind(this)
+    this.imageUpload = this.imageUpload.bind(this)
     this.descriptionEdit = this.descriptionEdit.bind(this)
+    this.setError = this.setError.bind(this)
+    this.setFatal = this.setFatal.bind(this)
   }
 
   componentWillMount () {
@@ -53,13 +57,9 @@ export default class EditBot extends Component {
         }))
         .catch((error) => {
           if (error.message === 'Failed to fetch') {
-            this.setState({
-              fatal: 'A network error occured'
-            })
+            this.setFatal('A network error occured')
           } else {
-            this.setState({
-              fatal: 'An error occured: ' + error.message
-            })
+            this.setFatal('A fatal error occured: ' + error.message)
           }
         })
     }
@@ -111,23 +111,46 @@ export default class EditBot extends Component {
     }))
   }
 
+  imageUpload (e) {
+    const [file] = e.target.files
+    if (!file) {
+      this.setError('No file provided')
+    } else if (!config.image.includes(file.type)) {
+      this.setError('Please upload a supported PNG, JPG, GIF or WEBP file')
+    } else if (file.size > config.imageLimit) {
+      this.setError('This file is too large! Maximum of 2Mb please')
+    }
+    console.log(file)
+  }
+
   handleEditorDidMount (editor) {
     this.setState({
       editor
     })
   }
 
+  setFatal (message) {
+    this.setState({
+      fatal: message
+    })
+  }
+
+  setError (message) {
+    this.setState({
+      error: message
+    })
+  }
+
   render () {
     const newBot = this.state.newBot
     const oldBot = this.state.oldBot
-    const errors = this.state.errors
+    const error = this.state.error
     const fatal = this.state.fatal
 
     if (oldBot) {
       return (
         <main>
           <h1>{newBot ? 'Add' : 'Edit'} an application</h1>
-          { errors }
           <code><pre>{JSON.stringify(oldBot, null, 2)}</pre></code>
           <code><pre>{JSON.stringify(newBot, null, 2)}</pre></code>
           <div className="form-edit">
@@ -154,9 +177,15 @@ export default class EditBot extends Component {
             <label className="form-label" htmlFor="prefix">Bot Trigger Prefix</label>
             <input className="form-input" name="prefix" type="text" placeholder={oldBot.prefix} onChange={this.handleEdit}></input>
             <label className="form-label" htmlFor="images">Preview Images</label>
+            <label className="button blue" htmlFor="bannerUpload">Upload</label>
+            <input className="invisible" name="bannerUpload" id="bannerUpload" type="file" onChange={this.imageUpload}/>
             <ImageDrag items={oldBot.images} onChange={this.imageEdit} name="images"/>
             <button className='button green' type="submit">Submit</button>
           </div>
+          {error
+            ? <EmphasisBox colour="red">
+              { error }
+            </EmphasisBox> : null}
         </main>
       )
     } else if (fatal) {

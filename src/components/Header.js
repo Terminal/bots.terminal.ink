@@ -21,8 +21,9 @@ export default class Header extends Component {
         {
           user && user.username
             ? [
-              <a href="/test" key={0}>{user.username}</a>,
-              <a href={`${config.API_URI}auth/logout`} key={1}>Log out</a>
+              <Link to="/edit/new" key={0}>Add a bot</Link>,
+              <a href="/test" key={1}>{user.username}</a>,
+              <a href={`${config.API_URI}auth/logout`} key={2}>Log out</a>
             ]
             : <a href={`${config.API_URI}auth`}>Log in</a>
         }

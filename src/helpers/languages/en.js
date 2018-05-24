@@ -1,5 +1,5 @@
 module.exports = {
-  language: () => 'British English',
+  language: 'British English',
   'you-have-x-bots': ({ count }) => {
     if (count === 0) {
       return 'You have no bots'
